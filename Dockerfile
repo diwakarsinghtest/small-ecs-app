@@ -11,7 +11,7 @@ WORKDIR /app
 
 # This runs the go build command which compiles your Go code into a single, statically linked binary
 # called small-app.
-RUN go build -o small-ecs-app .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o small-ecs-app .
 
 RUN chmod +x /app/small-ecs-app
 FROM alpine:latest
@@ -20,6 +20,8 @@ RUN mkdir /app
 
 # Here, you're copying the compiled binary file small-app from the "builder" stage to the /app directory in the current stage.
 COPY --from=builder /app/small-ecs-app /app
+
+EXPOSE 8080
 
 # This provides the command to be executed when Docker runs your image.
 CMD [ "/app/small-ecs-app" ]
