@@ -1,22 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:590183999670:task-definition/small-app-task:3",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:851725502209:task-definition/small-app-task:4",
     "containerDefinitions": [
         {
-            "name": "small-app-ecs",
-            "image": "590183999670.dkr.ecr.us-east-1.amazonaws.com/small-ecs-app:latest",
+            "name": "small-ecs-app",
+            "image": "851725502209.dkr.ecr.us-east-1.amazonaws.com/small-app:latest",
             "cpu": 0,
             "portMappings": [
                 {
                     "name": "small-app-8080",
                     "containerPort": 8080,
                     "hostPort": 8080,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
-                },
-                {
-                    "name": "small-app-80",
-                    "containerPort": 80,
-                    "hostPort": 80,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -26,6 +19,7 @@
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "workingDirectory": "/app",
             "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
@@ -39,30 +33,18 @@
                 },
                 "secretOptions": []
             },
-            "healthCheck": {
-                "command": [
-                    "CMD-SHELL",
-                    "curl -f http://localhost:8080/health || exit 1"
-                ],
-                "interval": 30,
-                "timeout": 5,
-                "retries": 3
-            },
             "systemControls": []
         }
     ],
     "family": "small-app-task",
-    "executionRoleArn": "arn:aws:iam::590183999670:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::851725502209:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 4,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.24"
         },
         {
             "name": "ecs.capability.execution-role-awslogs"
@@ -74,10 +56,10 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
         },
         {
-            "name": "ecs.capability.container-health-check"
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -103,15 +85,10 @@
     "cpu": "1024",
     "memory": "3072",
     "runtimePlatform": {
-        "cpuArchitecture": "ARM64",
+        "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-10T14:18:18.916Z",
-    "registeredBy": "arn:aws:iam::590183999670:user/cloud_user",
-    "tags": [
-        {
-            "key": "small-app",
-            "value": "small-app"
-        }
-    ]
+    "registeredAt": "2024-09-10T19:42:59.363Z",
+    "registeredBy": "arn:aws:iam::851725502209:user/cloud_user",
+    "tags": []
 }
