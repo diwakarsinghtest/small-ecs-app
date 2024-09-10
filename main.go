@@ -7,7 +7,7 @@ import (
 
 func handlerFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("hello world")
-	fmt.Fprintf(w, "Hello, World!")
+	fmt.Fprintf(w, "Hello, World! nowww")
 }
 
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +23,7 @@ func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/home", handlerFunc)
 	http.HandleFunc("/health", healthCheckHandler)
-	fmt.Println("http service running")
+	fmt.Println("http service running nowwww")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println(err)
