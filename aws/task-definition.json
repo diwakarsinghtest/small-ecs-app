@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:590183999670:task-definition/small-app-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:590183999670:task-definition/small-app-task:2",
     "containerDefinitions": [
         {
             "name": "small-app-ecs",
@@ -54,7 +54,7 @@
     "family": "small-app-task",
     "executionRoleArn": "arn:aws:iam::590183999670:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -106,7 +106,7 @@
         "cpuArchitecture": "ARM64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-10T14:00:50.609Z",
+    "registeredAt": "2024-09-10T14:14:45.903Z",
     "registeredBy": "arn:aws:iam::590183999670:user/cloud_user",
     "tags": [
         {
