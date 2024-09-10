@@ -1,24 +1,23 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:590183999670:task-definition/aws-ecs-new-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:590183999670:task-definition/small-ecs-app-service:1",
     "containerDefinitions": [
         {
-            "name": "aws-ecs-new-app",
-            "image": "590183999670.dkr.ecr.us-east-1.amazonaws.com/small-ecs-app:latest",
+            "name": "small-ecs-app",
+            "image": "590183999670.dkr.ecr.us-east-1.amazonaws.com/small-ecs-app",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "aws-ecs-app-8080",
+                    "name": "aws-ecs-8080",
                     "containerPort": 8080,
                     "hostPort": 8080,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 },
                 {
-                    "name": "aws-ecs-app-80",
+                    "name": "aws-ecs-80",
                     "containerPort": 80,
                     "hostPort": 80,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
+                    "protocol": "tcp"
                 }
             ],
             "essential": true,
@@ -30,7 +29,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/aws-ecs-new-task",
+                    "awslogs-group": "/ecs/small-ecs-app-service",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -42,7 +41,8 @@
             "systemControls": []
         }
     ],
-    "family": "aws-ecs-new-task",
+    "family": "small-ecs-app-service",
+    "taskRoleArn": "arn:aws:iam::590183999670:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::590183999670:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -63,6 +63,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -91,7 +94,7 @@
         "cpuArchitecture": "ARM64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-10T12:47:38.736Z",
+    "registeredAt": "2024-09-10T13:04:25.339Z",
     "registeredBy": "arn:aws:iam::590183999670:user/cloud_user",
     "tags": [
         {
